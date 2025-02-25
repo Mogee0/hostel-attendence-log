@@ -1,5 +1,5 @@
 // Define the Google Apps Script Web App URL (replace with your actual URL)
-const googleAppsScriptUrl = "https://script.google.com/macros/s/AKfycbzgQFEZV5mztVYz2bN7BdcK6reELxNKWbmg-PW50ppCV-_IgeZovHzYo4kv7zBdINOY/exec";
+const googleAppsScriptUrl = "https://script.google.com/macros/s/AKfycbySAV2S0tzokOyOfOZ5Jv1YfnQp82GIykSkCMsTpVeHMvqp0DwrFA_NNzqehmvQxgE5/exec";
 
 // Sample student data for testing
 const sampleStudentData = {
