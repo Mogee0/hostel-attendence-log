@@ -72,7 +72,7 @@ document.getElementById("confirmBtn").addEventListener("click", function() {
   })
   .then(response => response.json())
   .then(data => {
-    alert("Attendance confirmed and logged successfully!");
+    alert("Attendance confirmed successfully!");
     // Optionally, hide the button after confirmation
     document.getElementById("confirmBtn").style.display = "none";
   })
