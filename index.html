@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hostel Warden Scanner</title>
+  <!-- Link to the external CSS file -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Include html5-qrcode library -->
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+</head>
+<body>
+  <h1>Hostel Warden Scanner</h1>
+  <p>Scan the student's QR code to retrieve their details.</p>
+  
+  <!-- QR Code Scanner Container -->
+  <div id="reader"></div>
+  
+  <!-- Student Details Display -->
+  <div class="student-details">
+    <h2>Student Details</h2>
+    <div id="student-info">
+      <!-- Student details will be shown here -->
+    </div>
+    <button id="confirmBtn" style="display: none;">Confirm Attendance</button>
+  </div>
+
+  <!-- Link to the external JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>
