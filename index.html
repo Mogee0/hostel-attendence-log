@@ -6,28 +6,55 @@
     <title>Hostel Attendance SEC </title>
     <script src="https://apis.google.com/js/api.js"></script>
     <script src="script.js"></script>
-<body>
+    <body>
     <div class="header">
-        <h1>Hostel Attendance SEC</h1>
+        <h1>Hostel Attendance System</h1>
     </div>
     
-    <div class="scanner-section">
-        <h2>Scan Student ID</h2>
-        <input type="text" id="scannerInput" placeholder="Scan or enter student ID..." autofocus>
+    <!-- Login Form -->
+    <div id="loginForm" class="login-form">
+        <h2 style="text-align: center;">Warden Login</h2>
+        <form>
+            <div class="input-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter password" required>
+            </div>
+            <div style="text-align: center;">
+                <button id="loginBtn" type="submit" class="button">Sign In</button>
+            </div>
+        </form>
     </div>
     
-    <div id="studentDetails">
-        <!-- Student details will appear here after scanning -->
+    <!-- Attendance System (hidden until login) -->
+    <div id="attendanceSystem" style="display: none;">
+        <div class="user-controls">
+            <button id="logoutBtn" class="button danger">Logout</button>
+        </div>
+        
+        <div class="scanner-section">
+            <h2>Scan Student ID</h2>
+            <div class="scan-control">
+                <input type="text" id="scannerInput" placeholder="Scan or enter student ID..." autofocus>
+                <button id="scanBtn" class="button secondary">Scan</button>
+            </div>
+        </div>
+        
+        <div id="studentDetails">
+            <!-- Student details will appear here after scanning -->
+        </div>
+        
+        <div class="confirm-container">
+            <button id="confirmBtn" disabled>Confirm Attendance</button>
+        </div>
+        
+        <div class="admin-panel">
+            <h3>Admin Tools</h3>
+            <button id="createSheetBtn" class="button secondary">Create Monthly Sheet (1-31 Days)</button>
+        </div>
     </div>
-    
-    <div style="text-align: center;">
-        <button id="confirmBtn" disabled>Confirm Attendance</button>
-    </div>
-    
-    <div class="setup-tools">
-        <h3>Admin Tools</h3>
-        <button onclick="createMonthlyAttendanceSheet()">Create Monthly Sheet (1-31 Days)</button>
-    </div>
-  
 </body>
 </html>
