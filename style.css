@@ -1,25 +1,45 @@
-
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 20px;
-  }
-  
-  #reader {
-    width: 300px;
-    margin: auto;
-  }
-  
-  .student-details {
-    margin-top: 20px;
-    border-top: 1px solid #ccc;
-    padding-top: 20px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-  
+ <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .scanner-section {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .student-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+        #confirmBtn {
+            display: none;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 auto;
+            font-size: 16px;
+        }
+        #confirmBtn:hover {
+            background-color: #45a049;
+        }
+        #studentDetails {
+            margin-bottom: 20px;
+        }
+        .setup-tools {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
