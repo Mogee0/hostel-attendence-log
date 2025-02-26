@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hostel Warden Scanner</title>
-  <!-- Link to the external CSS file -->
-  <link rel="stylesheet" href="style.css" />
-  <!-- Include html5-qrcode library -->
-  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Attendance SEC </title>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="script.js"></script>
 <body>
-  <h1>Hostel Warden Scanner</h1>
-  <p>Scan the student's QR code to retrieve their details.</p>
-  
-  <!-- QR Code Scanner Container -->
-  <div id="reader"></div>
-  
-  <!-- Student Details Display -->
-  <div class="student-details">
-    <h2>Student Details</h2>
-    <div id="student-info">
-      <!-- Student details will be shown here -->
+    <div class="header">
+        <h1>Hostel Attendance SEC</h1>
     </div>
-    <button id="confirmBtn" style="display: none;">Confirm Attendance</button>
-  </div>
-
-  <!-- Link to the external JavaScript file -->
-  <script src="script.js"></script>
+    
+    <div class="scanner-section">
+        <h2>Scan Student ID</h2>
+        <input type="text" id="scannerInput" placeholder="Scan or enter student ID..." autofocus>
+    </div>
+    
+    <div id="studentDetails">
+        <!-- Student details will appear here after scanning -->
+    </div>
+    
+    <div style="text-align: center;">
+        <button id="confirmBtn" disabled>Confirm Attendance</button>
+    </div>
+    
+    <div class="setup-tools">
+        <h3>Admin Tools</h3>
+        <button onclick="createMonthlyAttendanceSheet()">Create Monthly Sheet (1-31 Days)</button>
+    </div>
+  
 </body>
 </html>
