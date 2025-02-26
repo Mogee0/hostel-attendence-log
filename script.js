@@ -5,7 +5,7 @@
 
 // Constants for Google Sheets API
 const API_KEY = 'AIzaSyC652GuH15p4wCy97mND6J5MQizY5LRyTk'; // Replace with your Google API key
-const SPREADSHEET_ID = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSaSdJLkIsar0KcNXjIXrv3PuYfCY_zvcMnr3J8yu-oH3n7CnHeoF-3T2n6VFF9Wvvgn4tPdV4iyxLn/pubhtml?gid=0&single=true'; // Replace with your Google Sheet ID
+const SPREADSHEET_ID = '2PACX-1vSaSdJLkIsar0KcNXjIXrv3PuYfCY_zvcMnr3J8yu-oH3n7CnHeoF-3T2n6VFF9Wvvgn4tPdV4iyxLn'; // Replace with your Google Sheet ID
 const SHEET_NAME = 'Attendance';
 
 // Initialize Google API client
