@@ -1,7 +1,8 @@
-
-// First, we need to include the Google Sheets API client library
-// Add this to your HTML head section:
-// <script src="https://apis.google.com/js/api.js"></script>
+// Global variables
+let isLoggedIn = false;
+const USERS = {
+  "warden": "hostel123" // username: password
+};
 
 // Constants for Google Sheets API
 const API_KEY = 'AIzaSyC652GuH15p4wCy97mND6J5MQizY5LRyTk'; // Replace with your Google API key
@@ -15,8 +16,9 @@ function initClient() {
     discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
   }).then(() => {
     console.log('Google API client initialized');
-    // Enable the confirm button once API is loaded
-    document.getElementById('confirmBtn').disabled = false;
+    if (isLoggedIn) {
+      document.getElementById('confirmBtn').disabled = false;
+    }
   }).catch(error => {
     console.error('Error initializing Google API client', error);
   });
@@ -27,14 +29,67 @@ function loadGapiClient() {
   gapi.load('client', initClient);
 }
 
-// Function to handle student scan
-function handleStudentScan(studentId) {
+// Login function
+function login() {
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+  
+  if (USERS[username] && USERS[username] === password) {
+    isLoggedIn = true;
+    
+    // Hide login form, show attendance system
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('attendanceSystem').style.display = 'block';
+    
+    // Enable confirm button if API is loaded
+    if (gapi.client && gapi.client.sheets) {
+      document.getElementById('confirmBtn').disabled = false;
+    }
+    
+    // Focus on scanner input
+    document.getElementById('scannerInput').focus();
+  } else {
+    alert('Invalid username or password');
+  }
+}
+
+// Logout function
+function logout() {
+  isLoggedIn = false;
+  
+  // Show login form, hide attendance system
+  document.getElementById('loginForm').style.display = 'block';
+  document.getElementById('attendanceSystem').style.display = 'none';
+  
+  // Clear login form
+  document.getElementById('username').value = '';
+  document.getElementById('password').value = '';
+  
+  // Clear student details
+  document.getElementById('studentDetails').innerHTML = '';
+  document.getElementById('confirmBtn').style.display = 'none';
+}
+
+// Function to handle student scan - improved for multiple scan methods
+function handleStudentScan() {
+  const studentId = document.getElementById('scannerInput').value.trim();
+  
+  if (!studentId) {
+    alert('Please enter a valid Student ID');
+    return;
+  }
+  
   // Fetch student data from Google Sheet
   fetchStudentDataFromSheet(studentId);
 }
 
 // Function to fetch student data from the Google Sheet
 function fetchStudentDataFromSheet(studentId) {
+  if (!isLoggedIn) {
+    alert('Please log in first');
+    return;
+  }
+  
   gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: SPREADSHEET_ID,
     range: SHEET_NAME
@@ -62,9 +117,9 @@ function fetchStudentDataFromSheet(studentId) {
     // Get student details from the first columns
     const studentData = {
       id: values[studentRowIndex][0],
-      name: values[studentRowIndex][1],
-      room: values[studentRowIndex][2],
-      course: values[studentRowIndex][3]
+      name: values[studentRowIndex][1] || 'N/A',
+      room: values[studentRowIndex][2] || 'N/A',
+      course: values[studentRowIndex][3] || 'N/A'
     };
     
     displayStudentData(studentData);
@@ -95,6 +150,11 @@ function displayStudentData(student) {
 
 // Function to mark attendance in Google Sheets
 function markAttendance() {
+  if (!isLoggedIn) {
+    alert('Please log in first');
+    return;
+  }
+  
   const studentId = document.getElementById('confirmBtn').dataset.studentId;
   if (!studentId) {
     alert('No student selected');
@@ -218,26 +278,13 @@ function letterToColumn(letter) {
   return column;
 }
 
-// Add event listeners when the page loads
-document.addEventListener('DOMContentLoaded', function() {
-  // Load the Google API client
-  loadGapiClient();
-  
-  // Add event listener for confirm button
-  document.getElementById('confirmBtn').addEventListener('click', markAttendance);
-  
-  // Add event listener for scanner input
-  document.getElementById('scannerInput').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      handleStudentScan(this.value);
-    }
-  });
-});
-
 // Function to create a new month's attendance sheet (1-31 days)
-// This is a helper function you can run in browser console to set up your sheet
 function createMonthlyAttendanceSheet() {
+  if (!isLoggedIn) {
+    alert('Please log in first');
+    return;
+  }
+  
   if (!confirm('This will create a new attendance sheet with days 1-31. Continue?')) {
     return;
   }
@@ -264,5 +311,41 @@ function createMonthlyAttendanceSheet() {
   });
 }
 
-// You can call this function in the browser console after loading the page:
-// createMonthlyAttendanceSheet();
+// Add event listeners when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+  // Load the Google API client
+  loadGapiClient();
+  
+  // Start with login form visible, attendance system hidden
+  document.getElementById('loginForm').style.display = 'block';
+  document.getElementById('attendanceSystem').style.display = 'none';
+  
+  // Add event listener for login form submission
+  document.getElementById('loginBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    login();
+  });
+  
+  // Add event listener for logout button
+  document.getElementById('logoutBtn').addEventListener('click', logout);
+  
+  // Add event listener for confirm button
+  document.getElementById('confirmBtn').addEventListener('click', markAttendance);
+  
+  // Add event listener for scanner input
+  document.getElementById('scannerInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleStudentScan();
+    }
+  });
+  
+  // Add event listener for scan button (alternative to using Enter key)
+  document.getElementById('scanBtn').addEventListener('click', function() {
+    handleStudentScan();
+  });
+  
+  // Add event listener for create sheet button
+  document.getElementById('createSheetBtn').addEventListener('click', createMonthlyAttendanceSheet);
+});
+
