@@ -1,62 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hostel Attendance SEC </title>
-    <script src="https://apis.google.com/js/api.js"></script>
-    <script src="script.js"> </script>
-    <link rel="stylesheet" href="style.css">
-        </head>
-    <body>
-    <div class="header">
-        <h1>Hostel Attendance SEC</h1>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hostel Warden Scanner</title>
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Include html5-qrcode library -->
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+</head>
+<body>
+  <h1>Hostel Warden Scanner</h1>
+  <p>Scan the student's QR code to retrieve their details.</p>
+  
+  <!-- QR Code Scanner Container -->
+  <div id="reader"></div>
+  
+  <!-- Student Details Display -->
+  <div class="student-details">
+    <h2>Student Details</h2>
+    <div id="student-info">
+      <!-- Student details will be shown here -->
     </div>
-    <!-- Login Form -->
-    <div class="login-container">
-        <h2>Welcome Back!</h2>
-        <p class="subtitle">Sign in to continue</p>
-        <form action="dashboard.html" method="POST">
-            <div class="input-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
-            </div>
-            
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
-            </div>
-            
-            <button type="submit" class="login-btn">Login</button>
-        </form>
-        <p class="signup-text">Don't have an account? <a href="signup.html">Sign Up</a></p>
-    </div>
-    <!-- Attendance System (hidden until login) -->
-    <div id="attendanceSystem" style="display: none;">
-        <div class="user-controls">
-            <button id="logoutBtn" class="button danger">Logout</button>
-        </div>
-        
-        <div class="scanner-section">
-            <h2>Scan Student ID</h2>
-            <div class="scan-control">
-                <input type="text" id="scannerInput" placeholder="Scan or enter student ID..." autofocus>
-                <button id="scanBtn" class="button secondary">Scan</button>
-            </div>
-        </div>
-        
-        <div id="studentDetails">
-            <!-- Student details will appear here after scanning -->
-        </div>
-        
-        <div class="confirm-container">
-            <button id="confirmBtn" disabled>Confirm Attendance</button>
-        </div>
-        
-        <div class="admin-panel">
-            <h3>Admin Tools</h3>
-            <button id="createSheetBtn" class="button secondary">Create Monthly Sheet (1-31 Days)</button>
-        </div>
-    </div>
+    <button id="confirmBtn" style="display: none;">Confirm Attendance</button>
+  </div>
+
+  <!-- Link to external JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
