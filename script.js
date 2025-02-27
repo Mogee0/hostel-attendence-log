@@ -36,42 +36,7 @@ function loadGapiClient() {
   gapi.load('client', initClient);
 }
 
-// Login function
-function login() {
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
-  
-  if (USERS[username] && USERS[username] === password) {
-    isLoggedIn = true;
-    
-    // Hide login form, show attendance system
-    document.getElementById('loginForm').style.display = 'none';
-    document.getElementById('attendanceSystem').style.display = 'block';
-    
-    // Enable confirm button if API is loaded
-    if (gapi.client && gapi.client.sheets) {
-      document.getElementById('confirmBtn').disabled = false;
-    }
-    
-    // Focus on scanner input
-    document.getElementById('scannerInput').focus();
-  } else {
-    alert('Invalid username or password');
-  }
-}
 
-// Logout function
-function logout() {
-  isLoggedIn = false;
-  
-  // Show login form, hide attendance system
-  document.getElementById('loginForm').style.display = 'block';
-  document.getElementById('attendanceSystem').style.display = 'none';
-  
-  // Clear login form
-  document.getElementById('username').value = '';
-  document.getElementById('password').value = '';
-  
   // Clear student details
   document.getElementById('studentDetails').innerHTML = '';
   document.getElementById('confirmBtn').style.display = 'none';
