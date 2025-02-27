@@ -1,15 +1,22 @@
 // Global variables
-const container = document.querySelector('.container');
-const registerBtn = document.querySelector('.register-btn');
-const loginBtn = document.querySelector('.login-btn');
+document.addEventListener("DOMContentLoaded", function () {
+    const loginForm = document.querySelector("form");
 
-registerBtn.addEventListener('click', () => {
-    container.classList.add('active');
-})
+    loginForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent form submission
 
-loginBtn.addEventListener('click', () => {
-    container.classList.remove('active');
-})
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        // Dummy authentication (Replace with real backend validation)
+        if (email === "admin@hostel.com" && password === "123456") {
+            alert("Login Successful!");
+            window.location.href = "dashboard.html"; // Redirect to the dashboard
+        } else {
+            alert("Invalid Email or Password. Try again.");
+        }
+    });
+});
 
 // Constants for Google Sheets API
 const API_KEY = 'AIzaSyC652GuH15p4wCy97mND6J5MQizY5LRyTk'; // Replace with your Google API key
