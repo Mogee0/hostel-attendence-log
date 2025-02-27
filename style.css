@@ -1,227 +1,25 @@
- <style>
-/* Apply a gradient background with animation */
+/* style.css */
+
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    animation: gradientBG 5s infinite alternate;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 20px;
 }
 
-/* Smooth animated background */
-@keyframes gradientBG {
-    0% { background: linear-gradient(135deg, #1e3c72, #2a5298); }
-    100% { background: linear-gradient(135deg, #4b6cb7, #182848); }
+#reader {
+  width: 300px;
+  margin: auto;
 }
 
-/* Glassmorphism Login Box */
-.login-container {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    width: 380px;
-    color: white;
+.student-details {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
 }
 
-/* Headings & Subtitle */
-h2 {
-    font-size: 26px;
-    margin-bottom: 10px;
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
 }
-
-.subtitle {
-    font-size: 14px;
-    opacity: 0.8;
-    margin-bottom: 20px;
-}
-
-/* Input Fields */
-.input-group {
-    text-align: left;
-    margin-bottom: 15px;
-}
-
-label {
-    font-size: 14px;
-    font-weight: 500;
-    display: block;
-    margin-bottom: 5px;
-}
-
-input {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    font-size: 14px;
-    outline: none;
-}
-
-input::placeholder {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-/* Login Button */
-.login-btn {
-    width: 100%;
-    padding: 12px;
-    background: #ffd700;
-    color: #333;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-}
-
-.login-btn:hover {
-    background: #ffcc00;
-}
-
-/* Sign-up Link */
-.signup-text {
-    margin-top: 15px;
-    font-size: 14px;
-}
-
-.signup-text a {
-    color: #ffd700;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.signup-text a:hover {
-    text-decoration: underline;
-}
-
-
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
-            border-radius: 5px
-        }
-        .input-group {
-            margin-bottom: 15px;
-        }
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .input-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .scanner-section {
-            margin-bottom: 30px;
-            text-align: center;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #f0f0f0;
-        }
-        .scan-control {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        .scan-control input {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            flex-grow: 1;
-            max-width: 300px;
-        }
-        .student-card {
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px auto;
-            background-color: #f9f9f9;
-            max-width: 400px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .confirm-container {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
-        #confirmBtn {
-            display: none;
-            padding: 12px 24px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        #confirmBtn:hover {
-            background-color: #45a049;
-        }
-        #confirmBtn:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
-        }
-        #studentDetails {
-            margin-bottom: 20px;
-        }
-        .button {
-            padding: 10px 15px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .button:hover {
-            background-color: #45a049;
-        }
-        .button.secondary {
-            background-color: #5d76a9;
-        }
-        .button.secondary:hover {
-            background-color: #4a5f89;
-        }
-        .button.danger {
-            background-color: #f44336;
-        }
-        .button.danger:hover {
-            background-color: #d32f2f;
-        }
-        .admin-panel {
-            margin-top: 40px;
-            padding: 15px;
-            border-top: 1px solid #ddd;
-            background-color: #f0f0f0;
-            border-radius: 5px;
-        }
-        .user-controls {
-            display: flex;
-            justify-content: flex-end;
-            padding: 10px 0;
-        }
-    </style>
