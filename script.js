@@ -1,8 +1,15 @@
 // Global variables
-let isLoggedIn = false;
-const USERS = {
-  "warden": "hostel123" // username: password
-};
+const container = document.querySelector('.container');
+const registerBtn = document.querySelector('.register-btn');
+const loginBtn = document.querySelector('.login-btn');
+
+registerBtn.addEventListener('click', () => {
+    container.classList.add('active');
+})
+
+loginBtn.addEventListener('click', () => {
+    container.classList.remove('active');
+})
 
 // Constants for Google Sheets API
 const API_KEY = 'AIzaSyC652GuH15p4wCy97mND6J5MQizY5LRyTk'; // Replace with your Google API key
